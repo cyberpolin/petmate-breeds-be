@@ -8,11 +8,11 @@ app.get('/api', (req, res)=> {
     try {
         const breed = query.search
 
-        if(breed){
-            console.log();
-            res.send(breeds.find(b=>b===breed))
+        if (breed) {
+          console.log()
+          res.send(breeds.find((b) => b.name === breed))
         }
-        res.send(breeds)
+        res.send(breeds.map((b) => ({ name: b })))
     }catch(error) {
         console.log('error', error)
     }
