@@ -9,7 +9,7 @@ const search = new JsSearch.Search("name") // remember the name key from breeds.
 search.addDocuments(breeds)
 search.addIndex("name")
 
-app.get("/api", (req, res) => {
+app.get("/api/breeds", (req, res) => {
   const { query } = req
 
   try {
@@ -23,6 +23,11 @@ app.get("/api", (req, res) => {
   } catch (error) {
     console.log("error", error)
   }
+})
+
+app.get("/api/breeds/:id", (req, res) => {
+  const { id } = req.params
+  res.send(breeds[id])
 })
 
 module.exports = app
