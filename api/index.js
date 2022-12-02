@@ -1,22 +1,28 @@
-const breeds = require('./breeds.json')
+const app = require("express")()
 
-const app = require('express')()
+const JsSearch = require("js-search")
 
-app.get('/api', (req, res)=> {
-    const {query} = req
-    
-    try {
-        const breed = query.search
+const breeds = require("./breeds.json")
 
-        if (breed) {
-          console.log()
-          res.send(breeds.find((b) => b.name === breed))
-        }
-        res.send(breeds.map((b) => ({ name: b })))
-    }catch(error) {
-        console.log('error', error)
+const search = new JsSearch.Search("name") // remember the name key from breeds.json
+// search.addIndex("name")
+search.addDocuments(breeds)
+search.addIndex("name")
+
+app.get("/api", (req, res) => {
+  const { query } = req
+
+  try {
+    const breed = query.search
+
+    if (breed) {
+      //   res.send(breeds.find((b) => b.name === breed)) . //old impleentation
+      res.send(search.search(breed))
     }
-    
+    res.send(breeds.map((b) => ({ name: b })))
+  } catch (error) {
+    console.log("error", error)
+  }
 })
 
 module.exports = app
