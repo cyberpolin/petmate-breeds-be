@@ -4,7 +4,7 @@
 
 ## Steps
 
-- (Set up express basic api)[https://github.com/cyberpolin/petmate-breeds-be/tree/basic-breed-api]
+- [Set up express basic api](https://github.com/cyberpolin/petmate-breeds-be/tree/basic-breed-api)
 - (Add search functions)[https://github.com/cyberpolin/petmate-breeds-be/tree/basic-breed-api/add-search-functions]
 - (Deploy it to vercel)[https://github.com/cyberpolin/petmate-breeds-be/tree/basic-breed-api/vercel-deploy]
 
